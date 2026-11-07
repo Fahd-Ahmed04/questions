@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اختبار البيئات الافتراضيه
+    </title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="login-container" class="quiz-container login-container" style="display: block">
+        <div class="students-list">
+            <h2><i class="fas fa-users"></i> فريق تطوير المنصة التعليمية</h2>
+            <ul>
+                <li>سهام عيد زيان</li>
+                <li>محمد غلاب محمد احمد</li>
+                <li>محمود ابراهيم حنفي محمود</li>
+                <li>عاصم نجاح سيد عبدالحكيم</li>
+                <li>احمد عبدالناصر محمد عبدالحكيم</li>
+                <li>مصطفي محمد محمود</li>
+                <li>جرجس ملاك عبدالله</li>
+                <li>دعاء خالد علي بسطاوي</li>
+                <li>امجد يعقوب عبدالله</li>
+                <li>خالد عطا محمود</li>
+            </ul>
+        </div>
+
+        <div class="login-header">
+            <h1><i class="fas fa-graduation-cap"></i> نظام الاختبارات الإلكترونية</h1>
+            <p class="subtitle">منصة متكاملة للتعلم والتقييم الإلكتروني</p>
+        </div>
+
+        <div class="video-section">
+            <h3><i class="fas fa-video"></i> فيديو تعريفي عن البيئات الافتراضيه</h3>
+            
+            <div class="video-link-container" id="video-link-container">
+                <button class="video-link-btn" id="show-video-btn">
+                    <i class="fas fa-play-circle"></i> اضغط هنا لمشاهدة الفيديو التعريفي
+                </button>
+                <p class="video-link-description">شاهد هذا الفيديو لفهم أهمية التعليم الإلكتروني وأدواته الحديثة</p>
+            </div>
+            
+            <div class="video-container" id="video-container" style="display: none;">
+                <div class="video-wrapper">
+                    <iframe 
+                        id="video-frame"
+                        src="https://www.youtube.com/watch?v=MoCaRMdq-Qw&pp=ygU62YHZitiv2YrZiCDYtNix2K0g2LnZhiDYp9mE2KjZitim2KfYqiDYp9mE2KfZgdiq2LHYp9i22YrZhw%3D%3D" 
+                        title="فيديو تعريفي عن البيئات الافتراضيه"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    <button class="close-video-btn" id="close-video-btn">
+                        <i class="fas fa-times"></i> إغلاق الفيديو
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-form">
+            <h2><i class="fas fa-sign-in-alt"></i> تسجيل الدخول للاختبار</h2>
+            <div class="form-group">
+                <label for="username-input"><i class="fas fa-user"></i> الاسم الكامل</label>
+                <input
+                    type="text"
+                    id="username-input"
+                    placeholder="أدخل اسمك بالكامل"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="email-input"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                <input
+                    type="email"
+                    id="email-input"
+                    placeholder="example@domain.com"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="password-input"><i class="fas fa-lock"></i> كلمة المرور</label>
+                <input
+                    type="password"
+                    id="password-input"
+                    placeholder="أدخل كلمة المرور"
+                    required
+                />
+                <div class="password-hint">
+                    <i class="fas fa-info-circle"></i> كلمة المرور يجب أن تتكون من 6 أحرف على الأقل
+                </div>
+            </div>
+
+            <button id="login-button" class="next-btn">
+                <i class="fas fa-play-circle"></i> بدء الاختبار
+            </button>
+        </div>
+    </div>
+
+    <div id="quiz-container" class="quiz-container" style="display: none">
+        <div class="quiz-header">
+            <div class="user-info">
+                <span id="current-user">مرحباً</span>
+                <button id="logout-during-quiz" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                </button>
+            </div>
+            <h2><i class="fas fa-question-circle"></i> اختبار التعليم الإلكتروني</h2>
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="current-question">0</span> / <span id="total-questions">10</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-info">
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <p>الوقت المقترح</p>
+                    <strong>15 دقيقة</strong>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <p>الإجابات المطلوبة</p>
+                    <strong><span id="answered-count">0</span> / <span id="total-questions-info">10</span></strong>
+                </div>
+            </div>
+          
+        </div>
+
+        <div id="questions-container"></div>
+        
+        <div class="quiz-footer">
+            <div class="completion-message" id="completion-message" style="display: none;">
+                <i class="fas fa-check"></i> أجبت على جميع الأسئلة، يمكنك الآن إرسال الاختبار
+            </div>
+            <button id="submit-button" class="next-btn" disabled>
+                <i class="fas fa-paper-plane"></i> إرسال الإجابات
+            </button>
+        </div>
+    </div>
+
+    <div id="result-container" class="quiz-container result-container" style="display: none">
+        <!-- سيتم تعبئته ديناميكياً -->
+    </div>
+
+    <div class="notification" id="notification">
+        <span id="notification-text"></span>
+    </div>
+
+    <div id="video-modal" class="video-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-video"></i> فيديو تعريفي</h3>
+                <button class="close-modal-btn" id="close-modal-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-video-container">
+                    <iframe 
+                        id="modal-video-frame"
+                        src="https://www.youtube.com/watch?v=MoCaRMdq-Qw&pp=ygU62YHZitiv2YrZiCDYtNix2K0g2LnZhiDYp9mE2KjZitim2KfYqiDYp9mE2KfZgdiq2LHYp9i22YrZhw%3D%3D" 
+                        title="فيديو تعريفي عن التعليم الإلكتروني"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-description">
+                    <h4>عن الفيديو:</h4>
+                    <p>هذا الفيديو يشرح مفهوم التعليم الإلكتروني وأهميته في العصر الحديث، وأدواته المختلفة التي يمكن استخدامها لتحسين تجربة التعلم.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
